@@ -12,9 +12,7 @@ export class PhotoShowComponent implements OnInit {
   photoUrl: string = '';
 
   constructor(private service: PhotosService) {
-    this.service.getPhoto().subscribe((response) => {
-      this.photoUrl = response.urls.regular
-    })
+    this.updatePhoto()
   }
 
 
@@ -22,10 +20,12 @@ export class PhotoShowComponent implements OnInit {
   }
 
   updatePhoto() {
-
     return this.service.getPhoto().subscribe((response) => {
       this.photoUrl = response.urls.regular
     })
   }
 
+  onClick() {
+    this.updatePhoto()
+  }
 }
